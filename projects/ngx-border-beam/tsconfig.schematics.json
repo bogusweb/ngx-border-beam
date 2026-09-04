@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "lib": ["es2022"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "outDir": "../../dist/ngx-border-beam/schematics",
+    "rootDir": "schematics",
+    "declaration": false,
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2022"
+  },
+  "include": ["schematics/**/*.ts"]
+}

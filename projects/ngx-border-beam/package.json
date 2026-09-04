@@ -1,0 +1,41 @@
+{
+  "name": "ngx-border-beam",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^22.1.0",
+    "@angular/core": "^22.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "description": "Angular wrapper for Jakub Antalik's border-beam - animated border beam effect component",
+  "keywords": [
+    "angular",
+    "ngx",
+    "border",
+    "beam",
+    "glow",
+    "animation",
+    "ui",
+    "effect",
+    "border-beam"
+  ],
+  "license": "MIT",
+  "author": "Pawel Boguslawski (https://github.com/bogusweb)",
+  "contributors": [
+    "Jakub Antalik (https://github.com/Jakubantalik) - original component and visual engine"
+  ],
+  "homepage": "https://bogusweb.github.io/ngx-border-beam/",
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "dependencies"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bogusweb/ngx-border-beam.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bogusweb/ngx-border-beam/issues"
+  }
+}

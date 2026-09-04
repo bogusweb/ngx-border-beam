@@ -1,0 +1,230 @@
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<main id="main-content" class="app">
+  <header class="header">
+    <nav aria-label="External links" class="top-bar-links">
+      <a class="icon-btn" href="https://github.com/Jakubantalik/border-beam" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+        </svg>
+      </a>
+      <a class="icon-btn" href="https://x.com/jakubantalik" target="_blank" rel="noopener noreferrer" aria-label="Follow on X (Twitter)">
+        <svg aria-hidden="true" width="15" height="16" viewBox="0 0 1200 1227">
+          <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
+        </svg>
+      </a>
+    </nav>
+    <div class="header-icon" aria-hidden="true">
+      <img class="header-icon-img header-icon-img--dark" src="icon-web.png" alt="" width="207" height="138" />
+    </div>
+    <h1 class="title">Border beam</h1>
+    <p class="subtitle-sm">Animated border beam component for Angular</p>
+  </header>
+
+  <nav class="tab-nav" role="tablist" aria-label="Effect family" #tabList>
+    <span class="tab-nav-pill" aria-hidden="true" #tabPill></span>
+    @for (opt of familyOptions; track opt.value) {
+      <button
+        class="tab-btn"
+        role="tab"
+        [attr.aria-selected]="family() === opt.value"
+        [attr.data-active]="family() === opt.value"
+        (click)="setFamily(opt.value)"
+      >{{ opt.label }}</button>
+    }
+  </nav>
+
+  <section
+    class="examples-section t-page-slide"
+    [attr.data-page]="family() === 'rotate' ? '1' : '2'"
+    aria-label="Effect demonstrations"
+  >
+    <div
+      class="t-page examples-page examples-page--rotate"
+      data-page-id="1"
+      [attr.aria-hidden]="family() !== 'rotate'"
+    >
+      <div class="example-row-full">
+        <ngx-border-beam class="beam-host" size="md" colorVariant="colorful" theme="dark" [active]="family() === 'rotate'">
+          <div mockChatInput></div>
+        </ngx-border-beam>
+      </div>
+      <div class="example-row-split">
+        <div class="example-cell">
+          <ngx-border-beam class="beam-host" size="sm" colorVariant="colorful" theme="dark" [active]="family() === 'rotate'">
+            <div mockIconButton></div>
+          </ngx-border-beam>
+        </div>
+        <div class="example-cell">
+          <ngx-border-beam
+            class="beam-host"
+            size="line"
+            colorVariant="colorful"
+            theme="dark"
+            [active]="family() === 'rotate'"
+            [duration]="3.1"
+            [borderRadius]="20"
+          >
+            <div mockSearchBar></div>
+          </ngx-border-beam>
+        </div>
+      </div>
+    </div>
+    <div
+      class="t-page examples-page examples-page--pulse"
+      data-page-id="2"
+      [attr.aria-hidden]="family() !== 'pulse'"
+    >
+      <div class="example-row-full">
+        <ngx-border-beam class="beam-host beam-host--soft" size="pulse-inner" colorVariant="colorful" theme="dark" [active]="isPulse()">
+          <div mockWorkingCard></div>
+        </ngx-border-beam>
+      </div>
+      <div class="example-row-split">
+        <div class="example-cell">
+          <ngx-border-beam class="beam-host beam-host--pill" size="pulse-inner" colorVariant="colorful" theme="dark" [active]="isPulse()">
+            <div mockSubscribeButton></div>
+          </ngx-border-beam>
+        </div>
+        <div class="example-cell">
+          <ngx-border-beam class="beam-host beam-host--pulse-outside-tuned" size="pulse-outside" colorVariant="colorful" theme="dark" [active]="isPulse()">
+            <div mockChatInput></div>
+          </ngx-border-beam>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Installation">
+    <div class="section-head">
+      <h2 class="section-title">Installation</h2>
+      <div class="platform-tabs" aria-label="Platform">
+        <button class="tab-btn" type="button" data-active="true" aria-pressed="true">Angular</button>
+        <a
+          class="tab-btn"
+          [href]="reactDocsUrl()"
+          aria-label="Open the original React docs at beam.jakubantalik.com"
+        >React</a>
+      </div>
+    </div>
+    <div class="code-block">
+      <code>{{ installCmd }}</code>
+      <button copyBtn [text]="installCmd" label="Copy install command"></button>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Usage">
+    <h2 class="section-title section-title--muted">Usage</h2>
+    <div class="code-block code-block--multi">
+      <code>{{ usageCode }}</code>
+      <button copyBtn [text]="usageCode" label="Copy usage example"></button>
+    </div>
+  </section>
+
+  <section class="playground-section" aria-label="Interactive playground">
+    <h2 class="section-title">Playground</h2>
+
+    <div class="playground-controls">
+      <div class="control-group" role="radiogroup" aria-label="Effect type">
+        <span class="control-label">Type</span>
+        <div class="control-options">
+          @for (opt of sizeOptions(); track opt.value) {
+            <button
+              class="tab-btn"
+              role="radio"
+              [attr.aria-checked]="playgroundSize() === opt.value"
+              [attr.data-active]="playgroundSize() === opt.value"
+              (click)="playgroundSize.set(opt.value)"
+            >{{ opt.label }}</button>
+          }
+        </div>
+      </div>
+
+      <div class="control-group" role="radiogroup" aria-label="Color variant">
+        <span class="control-label">Color</span>
+        <div class="control-options">
+          @for (opt of colorOptions; track opt.value) {
+            <button
+              class="tab-btn"
+              role="radio"
+              [attr.aria-checked]="playgroundColor() === opt.value"
+              [attr.data-active]="playgroundColor() === opt.value"
+              (click)="playgroundColor.set(opt.value)"
+            >{{ opt.label }}</button>
+          }
+        </div>
+      </div>
+
+      <div class="control-group control-group--strength">
+        <span class="control-label">Strength</span>
+        <div class="strength-track">
+          @if (playgroundStrength() > 0) {
+            <div class="strength-fill" [style.width.%]="playgroundStrength()"></div>
+          }
+          <span class="strength-value">{{ playgroundStrength() }}%</span>
+          <input
+            type="range"
+            class="strength-input"
+            [value]="playgroundStrength()"
+            (input)="onStrengthInput($event)"
+            min="0"
+            max="100"
+            step="1"
+            aria-label="Effect strength"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="playground-preview" [class.playground-preview--pulse]="isPulse()">
+      <ngx-border-beam
+        [class.beam-host--pulse-outside-tuned]="isTunedOutside()"
+        [size]="playgroundSize()"
+        [colorVariant]="playgroundColor()"
+        theme="dark"
+        [active]="playgroundActive()"
+        [strength]="playgroundStrength() / 100"
+        [style.--sub-glow-offset-x]="isTunedOutside() ? '1px' : null"
+        [style.--sub-glow-offset-y]="isTunedOutside() ? '0px' : null"
+        [style.--sub-core-blur]="isTunedOutside() ? '10px' : null"
+        [style.--sub-bloom-blur]="isTunedOutside() ? '19px' : null"
+        [style.--sub-glow-opacity-mul]="isTunedOutside() ? 1.71 : null"
+      >
+        <div class="card" [class.card-sm]="playgroundSize() === 'sm'" [class.card-md]="playgroundSize() !== 'sm'">
+          <p class="card-text">{{ playgroundSize() === 'sm' ? '' : 'Build anything...' }}</p>
+        </div>
+      </ngx-border-beam>
+
+      <div class="playground-toolbar">
+        <button
+          type="button"
+          class="playground-toggle"
+          (click)="playgroundActive.set(!playgroundActive())"
+          [attr.aria-pressed]="playgroundActive()"
+          [attr.aria-label]="playgroundActive() ? 'Pause animation' : 'Play animation'"
+          [title]="playgroundActive() ? 'Pause' : 'Play'"
+        >
+          @if (playgroundActive()) {
+            <svg aria-hidden="true" viewBox="0 0 16 16">
+              <rect x="4" y="3" width="3" height="10" rx="1" />
+              <rect x="9" y="3" width="3" height="10" rx="1" />
+            </svg>
+          } @else {
+            <svg aria-hidden="true" viewBox="0 0 16 16">
+              <path d="M4.5 2.5v11l9-5.5z" />
+            </svg>
+          }
+        </button>
+      </div>
+    </div>
+
+    <div class="code-block code-block--multi">
+      <code>{{ playgroundCode() }}</code>
+      <button copyBtn [text]="playgroundCode()" label="Copy playground code"></button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span class="footer-muted">Made by</span>&ngsp;<a class="footer-name" href="https://x.com/jakubantalik" target="_blank" rel="noopener noreferrer">Jakub Antalik</a>&ngsp;<span class="footer-muted">·</span>&ngsp;<span class="footer-muted">Angular wrapper by</span>&ngsp;<a class="footer-name" href="https://x.com/Sztimpfer" target="_blank" rel="noopener noreferrer">Paweł Bogusławski</a>
+  </footer>
+</main>

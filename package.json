@@ -1,0 +1,38 @@
+{
+  "name": "ngx-border-beam",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "build:lib": "ng build ngx-border-beam && npm run build:schematics && cp README.md LICENSE dist/ngx-border-beam/",
+    "build:schematics": "tsc -p projects/ngx-border-beam/tsconfig.schematics.json && cp projects/ngx-border-beam/schematics/collection.json projects/ngx-border-beam/schematics/package.json dist/ngx-border-beam/schematics/ && cp projects/ngx-border-beam/schematics/ng-add/schema.json dist/ngx-border-beam/schematics/ng-add/",
+    "build:demo": "ng build demo --base-href /ngx-border-beam/ && cp dist/demo/browser/index.html dist/demo/browser/404.html",
+    "release": "npm run build:lib && npm publish --access public ./dist/ngx-border-beam"
+  },
+  "private": true,
+  "packageManager": "npm@10.9.8",
+  "dependencies": {
+    "@angular/common": "^22.1.0",
+    "@angular/compiler": "^22.1.0",
+    "@angular/core": "^22.1.0",
+    "@angular/forms": "^22.1.0",
+    "@angular/platform-browser": "^22.1.0",
+    "@angular/router": "^22.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/schematics": "^22.1.2",
+    "@angular/build": "^22.1.2",
+    "@angular/cli": "^22.1.2",
+    "@angular/compiler-cli": "^22.1.0",
+    "jsdom": "^28.0.0",
+    "ng-packagr": "^22.1.0",
+    "prettier": "^3.8.1",
+    "typescript": "~6.0.2",
+    "vitest": "^4.0.8"
+  }
+}
